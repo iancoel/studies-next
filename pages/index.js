@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Footer from '../comps/Footer';
 import Navbar from '../comps/Navbar';
 
@@ -18,6 +19,9 @@ export default function Home() {
         quis natus pariatur voluptate maxime accusamus cupiditate earum est
         repellat doloremque!
       </p>
+      <Link href="/ninjas">
+        <a>See Ninja Listing</a>
+      </Link>
       <Footer />
     </div>
   );
