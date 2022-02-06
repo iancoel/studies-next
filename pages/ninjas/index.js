@@ -1,7 +1,15 @@
-import React from 'react';
 import Head from 'next/head';
+import styles from '../../styles/Ninjas.module.css';
 
-const Ninjas = () => {
+// Don`t write any code here that you would expect to run in the browser.
+export const getStaticProps = async () => {
+  const response = await fetch('http://jsonplaceholder.typicode.com/users');
+  const data = await response.json();
+
+  return { props: { ninjas: data } };
+};
+
+const Ninjas = ({ ninjas }) => {
   return (
     <>
       <Head>
@@ -10,6 +18,13 @@ const Ninjas = () => {
       </Head>
       <div>
         <h1>All ninjas</h1>
+        {ninjas.map((ninja) => (
+          <div key={ninja.id}>
+            <a className={styles.single}>
+              <h3>{ninja.name}</h3>
+            </a>
+          </div>
+        ))}
       </div>
     </>
   );
